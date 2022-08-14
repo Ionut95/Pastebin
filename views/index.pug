@@ -1,0 +1,21 @@
+extends paste/layout
+
+block content
+  body(style='background: lightgray')
+    h1(style='text-align: center; color: red') Pastebin clone
+    if flashMessage == 'Data succesfully inserted!'
+      div.alert.alert-success.alert-dismissible.fade.show(role='alert' style='margin-left: 30em; width: 35em') #{flashMessage}
+        button.btn-close(type='button' data-bs-dismiss='alert' arial-label='Close')
+    div.container
+      div.card-body(style='text-align: center')
+          form(action='/' method='POST')
+            label(for='title') Create a paste text and save it!
+            div
+              input#title(type='text' placeholder='enter title' name='paste_title' required)
+            div(style='padding-top: 4px')
+              textarea#text_paste(type='form-control' placeholder='enter text' rows='5' cols='40' name='paste_text' required)
+            div
+              button.btn.btn-outline-info.btn-sm(type='submit' value='Input') Save
+            div.cardbody  
+              a(href='/paste/list' target='_self') Click to get to the pastes titles page!
+  

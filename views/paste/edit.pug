@@ -1,0 +1,20 @@
+extends layout 
+
+block content 
+    body(style='background: lightblue')
+        h1(style='text-align: center') Edit your paste or delete it!
+        if flashMessage == 'Data was updated succesfully!'
+            div.alert.alert-success.alert-dismissible.fade.show(role='alert' style='margin-left: 30em; width: 35em') #{flashMessage}
+              button.btn-close(type='button' data-bs-dismiss='alert' arial-label='Close')
+        div.container
+            div.card-body(style='text-align: center')
+                div.row 
+                    div.col-md-6(style='margin-left: 19em')
+                        form(action='/paste/' + paste[0].id + '/edit' method='POST')
+                            div.form-group(style='padding-top: 5px; padding-bottom: 4px') 
+                                input.form-control(type='text' name='title_paste' value= paste[0].paste_title placeholder='title' required)
+                            div.form-group(style='padding-bottom: 3px')
+                                input.form-control(type='text' style='padding-bottom: 3px' name='text_paste' value= paste[0].paste_text placeholder='text' required)
+                            div.form-group
+                                button.btn.btn-info Save
+                                a.btn.btn-danger.delete(style='margin-right: 4px' href='/paste/' + paste[0].id + '/delete') Delete

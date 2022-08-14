@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+    body(style='background: lightblue')
+        h1(style='text-align: center') Choose a title to get to the main text!
+        if flashMessage == 'Record was succesfully deleted!'
+            div.alert.alert-success.alert-dismissible.fade.show(role='alert' style='margin-left: 30em; width: 35em') #{flashMessage}
+              button.btn-close(type='button' data-bs-dismiss='alert' arial-label='Close')
+        if data
+            each row in data
+                div(style='text-align: center')
+                    a(href='/paste/' + row.id + '/edit') #{row.paste_title}
+        else 
+            div(style='text-align: center') There are no pastes recorded! Write one!
