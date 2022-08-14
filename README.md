@@ -1,1 +1,1 @@
-# Pastebin
+Pastebin is a project created in Express js and using Database knowledge. Here you can save some text that you want with a suggestive title. Then you have the possibility to either modify or delete your record.
