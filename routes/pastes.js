@@ -10,13 +10,14 @@ router.get('/', function(req, res, next) {
   res.render('index', { flashMessage });
 });
 
-router.post('/', function(req, res, next) {
+router.post('/', async function(req, res, next) {
   let formData = req.body;
-  if(insertPaste(formData) == 'success') {
+  let message = await insertPaste(formData);
+  if(message == 'success') {
     req.flash('flMess', 'Data succesfully inserted!')
     res.redirect('/');
   } else {
-    console.log('Error message' + err);
+    console.log('Error message');
   }
 });
 
