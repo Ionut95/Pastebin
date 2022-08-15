@@ -1,11 +1,10 @@
 const { createConnection } = require('./server');
 
-function insertPaste(formData) {
+async function insertPaste(formData) {
   let query = `INSERT INTO pastes(paste_title, paste_text) VALUES ('${formData.paste_title}', '${formData.paste_text}');`;
   let client = createConnection();
-  client.query(query, (err, res) => {
-    client.end()
-  })
+  await client.query(query);
+  client.end();
   return 'success';
 }
 
